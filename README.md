@@ -1,3 +1,2 @@
-# PetRun
-
-Wechat mini game .
+# hello-world
+Hello world new project template.
