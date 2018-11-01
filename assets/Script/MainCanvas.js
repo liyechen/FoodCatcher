@@ -1,4 +1,4 @@
-cc.Class({
+var MainCanvas = cc.Class({
     extends: cc.Component,
 
     properties: {
@@ -10,7 +10,7 @@ cc.Class({
             default: null,
             type: cc.Button
         },
-        BurgerPrefab: {
+        FoodMaterialPrefab: {
             default: null,
             type: cc.Prefab
         },
@@ -38,7 +38,7 @@ cc.Class({
         console.log('game start.');
         if (this.buttonLabel.string == "start") {
             this.buttonLabel.string = "pause";
-            this.newFood(this.BurgerPrefab);
+            this.newFood(this.FoodMaterialPrefab);
         } else {
             this.buttonLabel.string = "start";
         }
@@ -49,6 +49,8 @@ cc.Class({
         let newFood = cc.instantiate(food);
         this.node.addChild(newFood);
         newFood.setPosition(this.getNewFoodPosition());
+        newFood.getComponent('FoodMaterial').setFallDownDistance(-this.ground.y + this.ceiling.y - 30);
+        newFood.getComponent('FoodMaterial').startFalling();
     },
 
     getNewFoodPosition () {

@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.42421875,
-      "y": 0.42421875,
+      "x": 0.41171875,
+      "y": 0.41171875,
       "z": 1
     },
     "_quat": {
@@ -52,7 +52,7 @@
       "z": 0,
       "w": 1
     },
-    "_localZOrder": 428,
+    "_localZOrder": 192,
     "groupIndex": 0,
     "autoReleaseAssets": false,
     "_id": "f63a9a59-f3b7-4b67-80c4-b234d4009683"
@@ -124,7 +124,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 429,
+    "_localZOrder": 193,
     "groupIndex": 0,
     "_id": "87PkDkfktDHIxqAQw/YRTa"
   },
@@ -185,7 +185,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 430,
+    "_localZOrder": 183,
     "groupIndex": 0,
     "_id": "79O/Wuf4RD/oeurhCrSOrn"
   },
@@ -278,7 +278,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 431,
+    "_localZOrder": 184,
     "groupIndex": 0,
     "_id": "38XXIlshdDSoUBLGn5h9Sj"
   },
@@ -346,7 +346,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 432,
+    "_localZOrder": 185,
     "groupIndex": 0,
     "_id": "2e0yXv/SVF57Fvz7VuoWGP"
   },
@@ -407,7 +407,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 433,
+    "_localZOrder": 186,
     "groupIndex": 0,
     "_id": "70FF1GUvlPUqZp1jrsoG3P"
   },
@@ -600,7 +600,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 434,
+    "_localZOrder": 187,
     "groupIndex": 0,
     "_id": "fe0C9+SzpMH6ZNLuZwNh6j"
   },
@@ -713,7 +713,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 435,
+    "_localZOrder": 188,
     "groupIndex": 0,
     "_id": "cac0N35X5NTq+wJ9A6LoSU"
   },
@@ -812,7 +812,7 @@
     "_id": "38RVbRqxFIuKwIpm3vKDuy"
   },
   {
-    "__type__": "eb6bavs7V1H+Ip6QyHjp6TO",
+    "__type__": "e8871b6xIBDloBll8cos/Qm",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -825,8 +825,8 @@
     "startButton": {
       "__id__": 10
     },
-    "BurgerPrefab": {
-      "__uuid__": "39ae2052-4890-4019-8b34-39fbe257b717"
+    "FoodMaterialPrefab": {
+      "__uuid__": "ef993781-fdb6-4cbb-81c9-b78d118f0d1a"
     },
     "ceiling": {
       "__id__": 15
@@ -834,6 +834,6 @@
     "ground": {
       "__id__": 12
     },
-    "_id": "6fwCZwvElPB6/w4B9+uoUk"
+    "_id": "4egvzr4P9K+ahA6uxpBh8Y"
   }
 ]
