@@ -70,7 +70,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 240,
+    "_localZOrder": 18,
     "groupIndex": 0,
     "_id": ""
   },
@@ -84,10 +84,8 @@
     "_enabled": true,
     "fallDuration": 5,
     "fallDistance": 500,
-    "texture": {
-      "__uuid__": "ba70aef8-fa2b-428a-ab6d-0b88e3984456"
-    },
-    "_id": "13b9ZMBmhOXo49vHzI/09j"
+    "texture": null,
+    "_id": "a4RHwV8vpBVYBfD9tvJumk"
   },
   {
     "__type__": "cc.Sprite",
@@ -113,7 +111,7 @@
     "_isTrimmedMode": false,
     "_state": 0,
     "_atlas": null,
-    "_id": "1b0aodB5lJgJLExTU50C8S"
+    "_id": "57yRFbazpLnpWFPkl9mZkL"
   },
   {
     "__type__": "cc.PrefabInfo",
