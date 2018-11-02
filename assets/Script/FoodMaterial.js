@@ -10,7 +10,7 @@ var FoodMaterial = cc.Class({
     },
 
     onLoad: function () {
-        this.fallBurger();
+        this.setTexture("burger_1");
     },
 
 
@@ -28,9 +28,9 @@ var FoodMaterial = cc.Class({
         this.node.runAction(this.fallAction);
     },
 
-    fallBurger: function() {
+    setTexture: function(picName) {
         var self = this;
-        cc.loader.loadRes("imgs/burger_1", function (err, texture) {
+        cc.loader.loadRes(`imgs/${picName}`, function (err, texture) {
             self.texture = texture;
             self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.texture);
         });

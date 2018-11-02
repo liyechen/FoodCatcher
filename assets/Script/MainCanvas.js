@@ -21,15 +21,14 @@ var MainCanvas = cc.Class({
         ground: {
             default: null,
             type: cc.Node
-        }
+        },
+        fallInterval: null
     },
 
-    // use this for initialization
     onLoad () {
 
     },
 
-    // called every frame
     update (dt) {
 
     },
@@ -38,12 +37,20 @@ var MainCanvas = cc.Class({
         console.log('game start.');
         if (this.buttonLabel.string == "start") {
             this.buttonLabel.string = "pause";
-            this.newFood(this.FoodMaterialPrefab);
+            this.fallInterval = setInterval(() => this.newFood(this.FoodMaterialPrefab), 1000);
         } else {
             this.buttonLabel.string = "start";
+            this.gamePause();
         }
        
     },
+
+    gamePause () {
+        clearInterval(this.fallInterval);
+        this.fallInterval = null;
+    },
+
+    
 
     newFood (food) {
         let newFood = cc.instantiate(food);
