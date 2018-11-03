@@ -22,7 +22,11 @@ var MainCanvas = cc.Class({
             default: null,
             type: cc.Node
         },
-        fallInterval: null
+        fallInterval: null,
+        basket: {
+            default: null,
+            type: cc.Node
+        }
     },
 
     onLoad () {
@@ -37,7 +41,7 @@ var MainCanvas = cc.Class({
         console.log('game start.');
         if (this.buttonLabel.string == "start") {
             this.buttonLabel.string = "pause";
-            this.fallInterval = setInterval(() => this.newFood(this.FoodMaterialPrefab), 1000);
+            this.fallInterval = setInterval(() => this.newFood(this.FoodMaterialPrefab), 2000);
         } else {
             this.buttonLabel.string = "start";
             this.gamePause();
@@ -56,8 +60,9 @@ var MainCanvas = cc.Class({
         let newFood = cc.instantiate(food);
         this.node.addChild(newFood);
         newFood.setPosition(this.getNewFoodPosition());
-        newFood.getComponent('FoodMaterial').setFallDownDistance(-this.ground.y + this.ceiling.y - 30);
+        newFood.getComponent('FoodMaterial').setFallDownDistance( - this.ground.y + this.ceiling.y - 30);
         newFood.getComponent('FoodMaterial').startFalling();
+        // newFood.getComponent('FoodMaterial').mainCanvas = this;
     },
 
     getNewFoodPosition () {
