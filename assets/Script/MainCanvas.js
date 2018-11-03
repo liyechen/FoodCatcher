@@ -43,7 +43,7 @@ var MainCanvas = cc.Class({
         console.log('game start.');
         if (this.buttonLabel.string == "start") {
             this.buttonLabel.string = "pause";
-            this.fallInterval = setInterval(() => this.newMaterial(this.FoodMaterialPrefab), 2000);
+            this.fallInterval = setInterval(() => this.newMaterial(this.FoodMaterialPrefab), 1500);
         } else {
             this.buttonLabel.string = "start";
             this.gamePause();

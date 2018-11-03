@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "010056f0-1cc5-4777-99dc-bbf2a02fbfa7",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "burger_meat": {
+      "ver": "1.0.3",
+      "uuid": "812d8c7c-b135-4b58-bd26-bda9f2218d13",
+      "rawTextureUuid": "010056f0-1cc5-4777-99dc-bbf2a02fbfa7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 3,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 100,
+      "height": 21,
+      "rawWidth": 100,
+      "rawHeight": 27,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

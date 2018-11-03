@@ -1,10 +1,10 @@
-const picNames = ["burger_1", "burger_2", "burger_3"];
-const maxPicNos = 3;
+const picNames = ["burger_bread1", "burger_bread2", "burger_meat", "burger_vege"];
+const maxPicNos = 4;
 
 var FoodMaterial = cc.Class({
     extends: cc.Component,
     properties: {
-        fallDuration: 5,
+        fallDuration: 4,
         fallDistance: 500,
         texture: {
             default: null,
