@@ -1,5 +1,6 @@
 const picNames = ["burger_1", "burger_2", "burger_3"];
 const maxPicNos = 3;
+
 var FoodMaterial = cc.Class({
     extends: cc.Component,
     properties: {
@@ -8,26 +9,27 @@ var FoodMaterial = cc.Class({
         texture: {
             default: null,
             type: cc.Texture2D
-        }
+        },
+        materialNo: 0
     },
 
     onLoad: function () {
-        let picNo = Math.round(Math.random() * 10000) % maxPicNos;
-        this.setTexture(picNames[picNo]);
-
+        this.materialNo = Math.round(Math.random() * 10000) % maxPicNos;
+        this.setTexture(picNames[this.materialNo]);
         cc.director.getCollisionManager().enabled = true; 
     },
 
     onCollisionEnter: function (other) { ; 
-        switch (other.node._name) {
+        switch (other.node.name) {
             case "basket":
+                this.mainCanvas.materialCaught(this.materialNo);
                 this.node.destroy();
                 break;
             case "ground":
-                this.node.color = cc.Color.RED; 
+                this.node.destroy(); 
                 break;
-            // default:   
-            //     this.node.color = cc.Color.RED; 
+            default:   
+                this.node.destroy();
         }
     },
 
@@ -51,12 +53,6 @@ var FoodMaterial = cc.Class({
             self.texture = texture;
             self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.texture);
         });
-    },
-
-    // getBasketDistance: function() {
-    //     let basketPosition = this.mainCanvas.basket.getPosition();
-    //     let distance = cc.pDistance(basketPosition, this.node.position())
-    //     return distance;
-    // }
+    }
 
 });

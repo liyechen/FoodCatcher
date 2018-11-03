@@ -1,3 +1,5 @@
+const CollectedMaterial = require("./CollectedMaterial");
+
 var MainCanvas = cc.Class({
     extends: cc.Component,
 
@@ -30,7 +32,7 @@ var MainCanvas = cc.Class({
     },
 
     onLoad () {
-
+        this.collectedMaterial = new CollectedMaterial();   
     },
 
     update (dt) {
@@ -41,7 +43,7 @@ var MainCanvas = cc.Class({
         console.log('game start.');
         if (this.buttonLabel.string == "start") {
             this.buttonLabel.string = "pause";
-            this.fallInterval = setInterval(() => this.newFood(this.FoodMaterialPrefab), 2000);
+            this.fallInterval = setInterval(() => this.newMaterial(this.FoodMaterialPrefab), 2000);
         } else {
             this.buttonLabel.string = "start";
             this.gamePause();
@@ -54,21 +56,23 @@ var MainCanvas = cc.Class({
         this.fallInterval = null;
     },
 
-    
-
-    newFood (food) {
-        let newFood = cc.instantiate(food);
-        this.node.addChild(newFood);
-        newFood.setPosition(this.getNewFoodPosition());
-        newFood.getComponent('FoodMaterial').setFallDownDistance( - this.ground.y + this.ceiling.y - 30);
-        newFood.getComponent('FoodMaterial').startFalling();
-        // newFood.getComponent('FoodMaterial').mainCanvas = this;
+    newMaterial (material) {
+        let newMaterial = cc.instantiate(material);
+        this.node.addChild(newMaterial);
+        newMaterial.setPosition(this.getNewMaterialPosition());
+        newMaterial.getComponent('FoodMaterial').setFallDownDistance( - this.ground.y + this.ceiling.y - 30);
+        newMaterial.getComponent('FoodMaterial').startFalling();
+        newMaterial.getComponent('FoodMaterial').mainCanvas = this;
     },
 
-    getNewFoodPosition () {
+    getNewMaterialPosition () {
         let randX = this.ceiling.x + this.ceiling.width * (Math.random() - 0.5) * 0.8;
-        console.log(randX);
         let randY = this.ceiling.y;
         return cc.v2(randX, randY);
     },
+
+    materialCaught (materialName) {
+        this.collectedMaterial.material.push(materialName);
+        console.log(this.collectedMaterial.material);
+    }
 });
