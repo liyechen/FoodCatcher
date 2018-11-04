@@ -1,11 +1,16 @@
 class CollectedMaterial {
 
     constructor() {
-        this.material = [];
+        this.material = {};
     }
 
-    addMaterial(materialNo) {
-        this.material.push(materialNo);
+    addMaterial(materialName) {
+        
+        if (this.material.hasOwnProperty(materialName)) {
+            this.material[materialName] += 1;
+        } else {
+            this.material[materialName] = 1;
+        }
         console.log(this.material);
     }
 

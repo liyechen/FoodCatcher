@@ -13,16 +13,13 @@ var FoodMaterial = cc.Class({
         materialNo: 0
     },
 
-    onLoad: function () {
-        this.materialNo = Math.round(Math.random() * 10000) % maxPicNos;
-        this.setTexture(picNames[this.materialNo]);
-        cc.director.getCollisionManager().enabled = true; 
+    onLoad() {
     },
 
-    onCollisionEnter: function (other) { ; 
+    onCollisionEnter(other) { 
         switch (other.node.name) {
             case "basket":
-                this.mainCanvas.materialCaught(this.materialNo);
+                this.mainCanvas.materialCaught(picNames[this.materialNo]);
                 this.node.destroy();
                 break;
             case "ground":
@@ -33,26 +30,26 @@ var FoodMaterial = cc.Class({
         }
     },
 
-    setFallDownAction: function () {
-        var fallDown = cc.moveBy(this.fallDuration, cc.v2(0, -this.fallDistance));
+    setFallDownAction() {
+        let fallDown = cc.moveBy(this.fallDuration, cc.v2(0, -this.fallDistance));
         return fallDown;
     },
 
-    setFallDownDistance: function (distance) {
+    setFallDownDistance(distance) {
         this.fallDistance = distance;
     },
 
-    startFalling: function() {
+    startFalling() {
         this.fallAction = this.setFallDownAction();
         this.node.runAction(this.fallAction);
     },
 
-    setTexture: function(picName) {
-        var self = this;
-        cc.loader.loadRes(`imgs/${picName}`, function (err, texture) {
-            self.texture = texture;
-            self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.texture);
-        });
-    }
+    setTexture() {
+        let self = this;
+        self.materialNo = Math.round(Math.random() * 10000) % maxPicNos;
+        let picName = picNames[this.materialNo];
+        self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.mainCanvas[picName]);
+    },
+
 
 });
