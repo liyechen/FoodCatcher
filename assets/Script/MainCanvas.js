@@ -1,5 +1,5 @@
 const CollectedMaterial = require("./CollectedMaterial");
-const picNames = ["burger_bread1", "burger_bread2", "burger_meat", "burger_vege"];
+import {foodMaterialList, foodList} from "./config";
 
 var MainCanvas = cc.Class({
     extends: cc.Component,
@@ -17,6 +17,10 @@ var MainCanvas = cc.Class({
             default: null,
             type: cc.Prefab
         },
+        orderPrefab:{
+            default: null,
+            type: cc.Prefab
+        },
         ceiling: {
             default: null,
             type: cc.Node
@@ -26,6 +30,7 @@ var MainCanvas = cc.Class({
             type: cc.Node
         },
         fallInterval: null,
+        orderInterval: null,
         basket: {
             default: null,
             type: cc.Node
@@ -40,15 +45,24 @@ var MainCanvas = cc.Class({
     onLoad() {
         this.collectedMaterial = new CollectedMaterial();
         cc.director.getCollisionManager().enabled = true;
-        picNames.forEach(picName => {
-            cc.loader.loadRes(`imgs/${picName}`, (err, texture) => {
-                this[picName] = texture;
-            });
-        });
+        this.loadPics(foodMaterialList);
+        this.loadPics(foodList);
     },
 
     update(dt) {
 
+    },
+
+    loadPics(list) {
+        list.forEach(picName => {
+            cc.loader.loadRes(`imgs/${picName}`, (err, texture) => {
+                if(err) {
+                    console.log(`pic: ${picName} not found`);
+                    return;
+                }
+                this[picName] = texture;
+            });
+        });
     },
 
     gameStart() {
@@ -56,6 +70,8 @@ var MainCanvas = cc.Class({
         if (this.buttonLabel.string == "start") {
             this.buttonLabel.string = "pause";
             this.fallInterval = setInterval(() => this.newMaterial(this.foodMaterialPrefab), 1500);
+            this.orderInterval = setInterval(() => this.newOrder(this.orderPrefab), 1500);
+
         } else {
             this.buttonLabel.string = "start";
             this.gamePause();
@@ -92,7 +108,7 @@ var MainCanvas = cc.Class({
 
     newMaterialListComponent(material, materialName) {
         if (this.collectedMaterial.material.hasOwnProperty(materialName)) {
-            this.node.getChildByName("scrollview").getChildByName("view").getChildByName("content").children.forEach(child => {
+            this.node.getChildByName("background").getChildByName("collectedMaterialList").getChildByName("view").getChildByName("content").children.forEach(child => {
                 if (child.getComponent('MaterialListComponent').getTexture() == materialName) {
                     child.getComponent('MaterialListComponent').numberOfMaterial += 1;
                     let number = child.getComponent('MaterialListComponent').numberOfMaterial;
@@ -103,8 +119,14 @@ var MainCanvas = cc.Class({
             let newMaterialListComponent = cc.instantiate(material);
             newMaterialListComponent.getComponent('MaterialListComponent').mainCanvas = this;
             newMaterialListComponent.getComponent('MaterialListComponent').setTexture(materialName);
-            this.node.getChildByName("scrollview").getChildByName("view").getChildByName("content").addChild(newMaterialListComponent);
+            this.node.getChildByName("background").getChildByName("collectedMaterialList").getChildByName("view").getChildByName("content").addChild(newMaterialListComponent);
         }
+    },
 
+    newOrder(order, foodName) {
+        let newOrder = cc.instantiate(order);
+        newOrder.getComponent('Order').mainCanvas = this;
+        newOrder.getComponent('Order').setTexture("burger");
+        this.node.getChildByName("background").getChildByName("orderList").getChildByName("view").getChildByName("content").addChild(newOrder);
     }
 });

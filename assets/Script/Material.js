@@ -1,4 +1,4 @@
-const MaterialPrice = require("./config.js");
+const MaterialPrice = require("./config");
 
 class Material{
     constructor(name) {
