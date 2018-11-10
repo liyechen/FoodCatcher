@@ -70,7 +70,7 @@ var MainCanvas = cc.Class({
         if (this.buttonLabel.string == "start") {
             this.buttonLabel.string = "pause";
             this.fallInterval = setInterval(() => this.newMaterial(this.foodMaterialPrefab), 1500);
-            this.orderInterval = setInterval(() => this.newOrder(this.orderPrefab), 1500);
+            this.orderInterval = setInterval(() => this.newOrder(this.orderPrefab), 3000);
 
         } else {
             this.buttonLabel.string = "start";
@@ -123,10 +123,10 @@ var MainCanvas = cc.Class({
         }
     },
 
-    newOrder(order, foodName) {
+    newOrder(order) {
         let newOrder = cc.instantiate(order);
         newOrder.getComponent('Order').mainCanvas = this;
-        newOrder.getComponent('Order').setTexture("burger");
+        newOrder.getComponent('Order').setTexture();
         this.node.getChildByName("background").getChildByName("orderList").getChildByName("view").getChildByName("content").addChild(newOrder);
     }
 });

@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.34921875,
-      "y": 0.34921875,
+      "x": 0.2515625,
+      "y": 0.2515625,
       "z": 1
     },
     "_quat": {
@@ -1327,7 +1327,7 @@
     "_N$paddingTop": 5,
     "_N$paddingBottom": 5,
     "_N$spacingX": 0,
-    "_N$spacingY": 30,
+    "_N$spacingY": 40,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0,
     "_id": "e2g6rzo7VIxoVw/ngsOOzi"

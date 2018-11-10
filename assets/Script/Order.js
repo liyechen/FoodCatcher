@@ -1,4 +1,4 @@
-
+import {foodList} from "./config";
 
 var Order = cc.Class({
     extends: cc.Component,
@@ -7,7 +7,8 @@ var Order = cc.Class({
         texture: {
             default: null,
             type: cc.Texture2D
-        }
+        },
+        foodNo: 0
     },
 
     onLoad() {
@@ -17,11 +18,12 @@ var Order = cc.Class({
     update(dt) {
 
     },
-
-    setTexture(picName) {
+    
+    setTexture() {
         let self = this;
-        self.texture = picName;
-        self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.mainCanvas[picName]);
+        self.foodNo = Math.round(Math.random() * 10000) % foodList.length;
+        let foodName = foodList[this.foodNo];
+        self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.mainCanvas[foodName]);
     },
 
     getTexture() {

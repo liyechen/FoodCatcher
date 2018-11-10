@@ -1,5 +1,4 @@
-const picNames = ["burger_bread1", "burger_bread2", "burger_meat", "burger_vege"];
-const maxPicNos = 4;
+import {foodMaterialList} from "./config";
 
 var FoodMaterial = cc.Class({
     extends: cc.Component,
@@ -19,7 +18,7 @@ var FoodMaterial = cc.Class({
     onCollisionEnter(other) { 
         switch (other.node.name) {
             case "basket":
-                this.mainCanvas.materialCaught(picNames[this.materialNo]);
+                this.mainCanvas.materialCaught(foodMaterialList[this.materialNo]);
                 this.node.destroy();
                 break;
             case "ground":
@@ -46,9 +45,9 @@ var FoodMaterial = cc.Class({
 
     setTexture() {
         let self = this;
-        self.materialNo = Math.round(Math.random() * 10000) % maxPicNos;
-        let picName = picNames[this.materialNo];
-        self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.mainCanvas[picName]);
+        self.materialNo = Math.round(Math.random() * 10000) % foodMaterialList.length;
+        let foodMaterial = foodMaterialList[this.materialNo];
+        self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.mainCanvas[foodMaterial]);
     },
 
 

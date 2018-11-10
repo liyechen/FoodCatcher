@@ -1,4 +1,4 @@
-const MaterialPrice = require("./config");
+import {materialPrice} from require("./config");
 
 class Material{
     constructor(name) {
@@ -7,7 +7,7 @@ class Material{
     }
 
     getPrice(name) {
-        return MaterialPrice[name];
+        return materialPrice[name];
     }
 
     
