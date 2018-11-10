@@ -5,7 +5,8 @@ var MaterialListComponent = cc.Class({
         texture: {
             default: null,
             type: cc.Texture2D
-        }
+        },
+        numberOfMaterial: 1
     },
 
     onLoad() {
@@ -18,7 +19,12 @@ var MaterialListComponent = cc.Class({
 
     setTexture(picName) {
         let self = this;
+        self.texture = picName;
         self.getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(self.mainCanvas[picName]);
+    },
+
+    getTexture() {
+        return this.texture;
     }
 
 

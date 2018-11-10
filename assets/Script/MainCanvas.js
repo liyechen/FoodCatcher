@@ -39,7 +39,7 @@ var MainCanvas = cc.Class({
 
     onLoad() {
         this.collectedMaterial = new CollectedMaterial();
-        cc.director.getCollisionManager().enabled = true; 
+        cc.director.getCollisionManager().enabled = true;
         picNames.forEach(picName => {
             cc.loader.loadRes(`imgs/${picName}`, (err, texture) => {
                 this[picName] = texture;
@@ -91,12 +91,20 @@ var MainCanvas = cc.Class({
     },
 
     newMaterialListComponent(material, materialName) {
-        if(this.collectedMaterial.material.hasOwnProperty(materialName)) {
-            return;
+        if (this.collectedMaterial.material.hasOwnProperty(materialName)) {
+            this.node.getChildByName("scrollview").getChildByName("view").getChildByName("content").children.forEach(child => {
+                if (child.getComponent('MaterialListComponent').getTexture() == materialName) {
+                    child.getComponent('MaterialListComponent').numberOfMaterial += 1;
+                    let number = child.getComponent('MaterialListComponent').numberOfMaterial;
+                    child.getChildByName('number').getComponent(cc.Label).string = `x${number}`;
+                }
+            });
+        } else {
+            let newMaterialListComponent = cc.instantiate(material);
+            newMaterialListComponent.getComponent('MaterialListComponent').mainCanvas = this;
+            newMaterialListComponent.getComponent('MaterialListComponent').setTexture(materialName);
+            this.node.getChildByName("scrollview").getChildByName("view").getChildByName("content").addChild(newMaterialListComponent);
         }
-        let newMaterialListComponent = cc.instantiate(material);
-        newMaterialListComponent.getComponent('MaterialListComponent').mainCanvas = this;
-        newMaterialListComponent.getComponent('MaterialListComponent').setTexture(materialName);
-        this.node.getChildByName("scrollview").getChildByName("view").getChildByName("content").addChild(newMaterialListComponent);
+
     }
 });

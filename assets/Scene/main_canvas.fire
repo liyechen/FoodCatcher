@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.19140625,
-      "y": 0.19140625,
+      "x": 0.34921875,
+      "y": 0.34921875,
       "z": 1
     },
     "_quat": {
@@ -790,8 +790,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 3,
-      "y": -584,
+      "x": 14,
+      "y": -567,
       "z": 0
     },
     "_scale": {
@@ -1349,8 +1349,8 @@
     "_N$startAxis": 0,
     "_N$paddingLeft": 0,
     "_N$paddingRight": 0,
-    "_N$paddingTop": 0,
-    "_N$paddingBottom": 0,
+    "_N$paddingTop": 5,
+    "_N$paddingBottom": 5,
     "_N$spacingX": 0,
     "_N$spacingY": 20,
     "_N$verticalDirection": 1,
